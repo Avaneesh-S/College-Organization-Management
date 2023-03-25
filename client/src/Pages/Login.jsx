@@ -1,11 +1,33 @@
-import { useState } from "react";
+import { useState} from "react";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const verify=async(e)=>{
+    const response=await fetch('/login',{
+      method:'POST',
+      body:JSON.stringify({
+        email_login:email,
+        password_login:password
+      }),
+      headers:{'Content-type':'application/json'}
+
+    })
+
+    const json=await response.json()
+
+    if(json.mssg="yes")
+    {
+      window.location.replace('/home')
+    }
+    else{
+      window.location.replace('/login')
+    }
+  }
+
   const handleSubmit = (e) => {
-    e.preventDefault();
+    verify()
     console.log(`Email: ${email}, Password: ${password}`);
   };
 
