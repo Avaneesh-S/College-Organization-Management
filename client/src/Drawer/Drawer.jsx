@@ -32,13 +32,10 @@ function Drawer() {
         <h2 className="text-xl font-bold mb-4">Organization Details</h2>
         <ul>
           <li className="mb-2">
-            <span className="font-semibold">Name:</span> Acme Corporation
+            <span className="font-semibold">Name:</span> Avaneesh S
           </li>
           <li className="mb-2">
-            <span className="font-semibold">Location:</span> San Francisco, CA
-          </li>
-          <li className="mb-2">
-            <span className="font-semibold">Founded:</span> 1999
+            <span className="font-semibold">Location:</span> Bengaluru, India
           </li>
           <li className="mb-2">
             <span className="font-semibold">Industry:</span> Technology
