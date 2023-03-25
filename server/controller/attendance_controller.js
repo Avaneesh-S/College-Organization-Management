@@ -2,7 +2,7 @@ const attend=require('../models/Attendance');
 
 const Attend=(req,res)=>{
     
-    const arr=req.body.day_attend
+    const arr=req.body.attendance
 
     const org="IIIT Dharwad"
     const course="Data Structure"
@@ -27,10 +27,6 @@ const Attend=(req,res)=>{
         })
 
     })
-   
-    
-    
-
 
 }
 
