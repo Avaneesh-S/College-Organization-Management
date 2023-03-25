@@ -9,7 +9,6 @@ const attend=(req,res)=>{
         .pipe(csv())
         .on('data', (data) => results.push(data))
         .on('end', () => {
-        //console.log(results)
         res.json({value:results});
     });
     

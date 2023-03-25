@@ -8,6 +8,8 @@ app.use(express.json())
 
 app.use('/attendance',require('./routes/attendance'))
 
+app.use('/submitAttendance',require('./routes/updat_atten'))
+
 app.listen(5000,()=>{
     console.log("listening on port 5000")
 })
