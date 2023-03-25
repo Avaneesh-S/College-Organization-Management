@@ -5,8 +5,8 @@ import Sidebar from "../home/Sidebar";
 import Cards from "../home/Cards";
 function Home() {
   return (
-    <div className="flex h-full w-full bg-slate-900">
-      <nav className="absolute top-0 w-full py-3 sm:px-8 px-3 h-fit flex justify-between">
+    <div className="flex h-full overflow-y-auto w-full bg-slate-900">
+      <nav className="z-10 backdrop-filter backdrop-blur-md bg-slate-900/60 absolute top-0 w-full py-3 sm:px-8 px-3 h-fit flex justify-between">
         <div className="flex items-center">
           <img
             className="h-8 w-auto mr-2"
@@ -55,8 +55,37 @@ function Home() {
       </nav>
       <Drawer />
       <Sidebar />
-      <div className="flex gap-8 w-full pl-[150px] pr-10 relative pt-24">
-        <div className="w-full flex-col p-6"></div>
+      <div className="flex gap-8 w-full pl-[150px] pr-10 relative top-[10%] h-[90%]">
+        <div className="w-full flex flex-col">
+          <div className="w-full rounded-md items-end min-h-[25rem] justify-between bg-center flex flex-col p-6 bg-[url('https://t3.ftcdn.net/jpg/02/54/80/60/360_F_254806029_19mSXkOwpIHBbZXLDcSQVsIXIEEAyhlp.jpg')] bg-cover bg-no-repeat">
+            <div className="text-4xl text-slate-200 text-right whitespace-nowrap">
+              Hi Nikhil!
+            </div>
+            <div className="w-1/2 text-2xl text-right text-slate-400 ">
+              Welcome to our management system website! We are here to help you
+              manage your business with ease and efficiency.
+            </div>
+            <button
+              type="button"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Explore
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 ml-2 -mr-1"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
         <div className="gap-4 flex flex-col">
           <div className="flex gap-4">
             <Cards
