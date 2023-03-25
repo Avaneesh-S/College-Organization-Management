@@ -65,6 +65,7 @@ function Attendance() {
           <tr key={index}>
             <td>{index + 1}</td>
             <td>{row}</td>
+            <td>{attenStatus[index]}</td>
             <td>
               <button
                 type="submit"

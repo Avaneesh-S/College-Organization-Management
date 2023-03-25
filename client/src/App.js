@@ -6,6 +6,7 @@ import CreateAccount from "./Pages/CreateAccount";
 import Demo from "./home/Demo";
 import Attendance from "./Pages/Attendance";
 import Profile from "./profile/profile"
+import AddStudents from "./Pages/AddStudents";
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/profile" element={<Profile/>}></Route>
           <Route path="/login" element={<LoginPage/>}></Route>
           <Route path="/demo" element={<Demo/>}></Route>
+          <Route path="/addstudents" element={<AddStudents/>}></Route>
         </Routes>
       </div>
     </Router>
