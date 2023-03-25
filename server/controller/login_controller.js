@@ -10,23 +10,26 @@ const login=(req,res)=>{
     let user_details=[]
     User.collection.find({Email:present_user_email}).forEach(user=>user_details.push(user))
     .then(()=>{
-
-        console.log(user_details[0])
-
-        if(user_details.length>0)
+        
+        if(user_details)
         {
+            console.log(user_details[0])
             if(user_details[0].Password===present_user_password)
             {
+                
                 res.json({mssg:"yes"})
             }
             else{
+                
                 res.json({mssg:"no"})
             }
-
         }
         else{
             res.json({mssg:"no"})
         }
+
+        
+        
         
         
         
