@@ -13,6 +13,7 @@ app.use(express.json())
 
 app.use('/submitAttendance',require('./routes/attendance'))
 app.use('/profile',require('./routes/profile'))
+app.use('/login',require('./routes/login'))
 
 app.use('/getStudentDetails',require('./routes/getStudentDetails'))
 
