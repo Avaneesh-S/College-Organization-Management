@@ -4,13 +4,14 @@ import Drawer from "../Drawer/Drawer";
 import Sidebar from "../home/Sidebar";
 import ProfileDrawer from "../profile/ProfileDrawer";
 import Cards from "../home/Cards";
+import Footer from "../Footer/footer";
 function Home() {
     const toggleDrawer = () => {
       document.getElementById("profile-drawer").style.right = '0px';
     };
   return (
     <div className="flex h-full overflow-y-auto w-full bg-slate-900">
-      <nav className="z-10 backdrop-filter overflow-x-hidden backdrop-blur-md bg-slate-900/60 absolute top-0 w-full py-3 sm:px-8 px-3 h-fit flex justify-between">
+      <nav className="border-b-[1px] border-slate-400 z-10 backdrop-filter overflow-x-hidden backdrop-blur-md bg-slate-900/60 absolute top-0 w-full py-3 sm:px-8 px-3 h-fit flex justify-between">
         <div className="flex items-center">
           <img
             className="h-8 w-auto mr-2"
@@ -22,7 +23,7 @@ function Home() {
           </h1>
         </div>
         <div className="relative pr-8 hidden md:flex gap-6 w-fit">
-          <input className="w-[30rem] h-full pl-10 pr-2 text-slate-300 focus:outline-none bg-slate-900 rounded shadow-md shadow-slate-700" />
+          <input className="w-[30rem] h-full pl-10 pr-2 text-slate-300 focus:outline-none bg-slate-900 rounded border-gray-600 border" />
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
               aria-hidden="true"
@@ -40,12 +41,12 @@ function Home() {
               ></path>
             </svg>
           </div>
-          <button className="h-full flex items-center justify-center aspect-square shadow-md shadow-slate-700">
+          <button className="h-full flex items-center justify-center aspect-square">
             <span className="text-slate-500 peer-focus:text-blue-600 transition-[color pointer-events-none material-symbols-outlined">
               settings
             </span>
           </button>
-          <button className="h-full flex items-center justify-center  aspect-square shadow-md shadow-slate-700">
+          <button className="h-full flex items-center justify-center  aspect-square">
             <span className="text-slate-500 peer-focus:text-blue-600 transition-[color pointer-events-none material-symbols-outlined">
               notifications
             </span>
@@ -55,6 +56,7 @@ function Home() {
       <ProfileDrawer/>
       <Drawer />
       <Sidebar />
+      <div className="flex flex-col">
       <div className="flex gap-8 w-full pl-[150px] pr-10 relative top-[10%] h-[90%]">
         <div className="w-full flex flex-col">
           <div className="w-full rounded-md items-end min-h-[25rem] justify-between bg-center flex flex-col p-6 bg-[url('https://t3.ftcdn.net/jpg/02/54/80/60/360_F_254806029_19mSXkOwpIHBbZXLDcSQVsIXIEEAyhlp.jpg')] bg-cover bg-no-repeat">
@@ -100,6 +102,8 @@ function Home() {
             />
           </div>
         </div>
+      </div>
+      <Footer/>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ function ProfileDrawer() {
 
       {/* Drawer */}
       <div
-        className={`fixed top-[10%] right-0 h-fit w-full md:w-1/3 bg-gray-900/50 shadow-lg shadow-slate-600 rounded backdrop-blur-md text-white overflow-hidden z-40 transition-transform duration-300 ease-in-out transform ${
+        className={`fixed top-[10%] border-slate-600 border right-0 h-fit w-full md:w-1/3 bg-gray-900/50 rounded backdrop-blur-md text-white overflow-hidden z-40 transition-transform duration-300 ease-in-out transform ${
           isOpen ? "translate-x-[-2rem]" : "translate-x-[110%]"
         }`}
       >

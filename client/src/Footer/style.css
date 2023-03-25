@@ -20,8 +20,10 @@ ul{
 	list-style: none;
 }
 .footer{
-	background-color: #24262b;
+	background-color: #13161f;
+	border-top:1px solid #48494b;
     padding: 70px 0;
+	width:100%;
 }
 .footer-col{
    width: 25%;
@@ -62,8 +64,13 @@ ul{
 	color: #ffffff;
 	padding-left: 8px;
 }
+.social-links{
+	display:flex;
+}
 .footer-col .social-links a{
-	display: inline-block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	height: 40px;
 	width: 40px;
 	background-color: rgba(255,255,255,0.2);
