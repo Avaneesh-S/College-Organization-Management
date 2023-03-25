@@ -9,7 +9,7 @@ const profile=(req,res)=>{
     let user_details=[]
     User.collection.find({Email:present_user_email}).forEach(user=>user_details.push(user))
     .then(()=>{
-        console.log(user_details[0])
+        // console.log(user_details[0])
         res.json({value:user_details[0]})
 
     })
