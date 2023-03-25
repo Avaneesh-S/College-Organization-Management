@@ -2,12 +2,12 @@ import React from "react";
 
 function InputField({ type, name, label, icon, onChange }) {
   return (
-    <div className="relative z-0 w-1/2 flex items-center group">
+    <div className="relative z-0 w-[20rem] flex items-center group">
       <input
         type={type}
         name={name}
         onChange={onChange}
-        className="pr-8 block px-2 backdrop-filter backdrop-blur-sm py-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-md appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        className="pr-8 block px-2 backdrop-filter backdrop-blur-sm py-2.5 w-full text-sm text-gray-900 bg-gray-200 rounded-md appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
         placeholder=" "
         required
       />
