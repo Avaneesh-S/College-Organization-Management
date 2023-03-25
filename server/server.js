@@ -13,6 +13,7 @@ app.use(express.json())
 
 app.use('/attendance',require('./routes/attendance'))
 app.use('/profile',require('./routes/profile'))
+app.use('/login',require('./routes/login'))
 
 app.listen(5000,()=>{
     console.log(process.env.NODE_ENV)
