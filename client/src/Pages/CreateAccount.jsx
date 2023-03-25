@@ -119,7 +119,7 @@ function CreateAccount() {
             type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Next Step: Payment Info
+            Create Account
           </button>
         </form>
       ),
@@ -144,11 +144,11 @@ function CreateAccount() {
         </svg>
       ),
       content: (
-        <div className="flex flex-col justify-center items-center bg-gray-100">
+        <div className="flex flex-col justify-center items-center">
           <h1 className="text-3xl font-bold text-green-600 mb-4">
             Congratulations!
           </h1>
-          <p className="text-lg text-gray-800 mb-8">
+          <p className="text-lg text-gray-300 mb-8">
             You have successfully created an account using React and Tailwind.
           </p>
           <a
@@ -171,35 +171,35 @@ function CreateAccount() {
   };
   return (
     <div className="flex items-center w-full h-full justify-center">
-      <div className="flex flex-col justify-center items-center p-4 border w-[50rem] rounded shadow-lg">
+      <div className="flex flex-col justify-center items-center p-4 w-[50rem] rounded bg-slate-900">
         <div className="flex justify-center flex-col gap-16 items-center">
           {steps.map((s) =>
             s.id === step ? (
               <div
                 key={s.id}
-                class="h-[16rem] flex justify-center items-center"
+                class="h-[16rem] flex justify-center items-center text-white"
               >
                 {s.content}
               </div>
             ) : null
           )}
           <div className="relative flex w-[40rem] justify-between items-center">
-            <div className="absolute h-3 rounded w-[40rem] border border-gray-500 bg-gray-300">
+            <div className="absolute h-3 rounded w-[40rem] border border-gray-500 bg-slate-900">
               <div className=""></div>
             </div>
             {steps.map((s) => (
               <div
                 key={s.id}
                 className={`relative ${
-                  s.id <= step ? "text-blue-600" : "text-gray-400"
+                  s.id <= step ? "text-blue-400" : "text-gray-500"
                 }`}
               >
                 <div className="flex justify-center items-center">
                   {s.id <= step ? (
-                    <span class="flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0">
+                    <span class="flex items-center justify-center w-10 h-10 bg-blue-900 rounded-full lg:h-12 lg:w-12">
                       <svg
                         aria-hidden="true"
-                        class="w-5 h-5 text-blue-600 lg:w-6 lg:h-6 dark:text-blue-300"
+                        class="w-5 h-5 text-blue-400 lg:w-6 lg:h-6"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +212,7 @@ function CreateAccount() {
                       </svg>
                     </span>
                   ) : (
-                    <span class="flex items-center border border-gray-500 justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 dark:bg-slate-300 shrink-0">
+                    <span class="flex items-center border border-gray-500 justify-center w-10 h-10 bg-slate-900 rounded-full lg:h-12 lg:w-12 dark:bg-slate-300 shrink-0">
                       {s.icon}
                     </span>
                   )}
@@ -223,7 +223,7 @@ function CreateAccount() {
         </div>
         <div className="flex justify-between w-[40rem] mt-4">
           <button
-            className={`px-4 py-2 bg-gray-600 text-white rounded ${
+            className={`px-4 py-2 bg-slate-900 text-white rounded ${
               step === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={prevStep}

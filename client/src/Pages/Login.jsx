@@ -1,85 +1,84 @@
-import { useState} from "react";
+import { useState } from 'react';
 
-const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const verify=async(e)=>{
-    const response=await fetch('/login',{
-      method:'POST',
-      body:JSON.stringify({
-        email_login:email,
-        password_login:password
-      }),
-      headers:{'Content-type':'application/json'}
-
-    })
-
-    const json=await response.json()
-
-    if(json.mssg="yes")
-    {
-      window.location.replace('/home')
+function LoginPage() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    const verify=async(e)=>{
+      const response=await fetch('/login',{
+        method:'POST',
+        body:JSON.stringify({
+          email_login:email,
+          password_login:password
+        }),
+        headers:{'Content-type':'application/json'}
+  
+      })
+  
+      const json=await response.json()
+  
+      if(json.mssg="yes")
+      {
+        window.location.replace('/home')
+      }
+      else{
+        window.location.replace('/login')
+      }
     }
-    else{
-      window.location.replace('/login')
-    }
-  }
-
-  const handleSubmit = (e) => {
-    verify()
-    console.log(`Email: ${email}, Password: ${password}`);
-  };
+  
+    const handleSubmit = (e) => {
+      verify()
+      console.log(`Email: ${email}, Password: ${password}`);
+    };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-200">
-      <div className="max-w-md w-full px-6 py-8 bg-white shadow-md rounded-lg">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">Log In</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-gray-700 font-bold mb-2"
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              className="px-3 py-2 border border-gray-400 rounded-lg w-full"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
-          <div className="mb-6">
-            <label
-              htmlFor="password"
-              className="block text-gray-700 font-bold mb-2"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="px-3 py-2 border border-gray-400 rounded-lg w-full"
-              placeholder="Enter your password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
-          >
-            Log In
-          </button>
-        </form>
+    <div
+      className=
+        'flex flex-col items-center justify-center h-screen bg-gray-900 text-white'
+    >
+      <h1 className="text-3xl font-bold mb-4">Login</h1>
+      <form onSubmit={handleSubmit} className="w-full max-w-sm">
+        <div className="mb-4">
+          <label htmlFor="email" className="block mb-2">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            className="block w-full px-3 py-2 rounded bg-gray-800 border border-gray-700 focus:outline-none focus:border-white"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="password" className="block mb-2">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            className="block w-full px-3 py-2 rounded bg-gray-800 border border-gray-700 focus:outline-none focus:border-white"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full py-2 px-4 bg-indigo-500 rounded text-white hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700"
+        >
+          Sign In
+        </button>
+      </form>
+      <div className="mt-8">
+        <span className="text-gray-400">Don't have an account?</span>
+        <a href="#" className="text-white font-bold">
+          Sign Up
+        </a>
       </div>
     </div>
   );
-};
+}
 
 export default LoginPage;

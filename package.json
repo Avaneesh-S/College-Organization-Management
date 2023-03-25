@@ -1,0 +1,22 @@
+{
+  "name": "college-organization-management",
+  "version": "1.0.0",
+  "description": "Creating a software to manage college and Organizations",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd server && npm install && cd ../client && npm install && exit 0",
+    "start": "cd server && npm run dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/C-NikhilKarthik/College-Organization-Management.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/C-NikhilKarthik/College-Organization-Management/issues"
+  },
+  "homepage": "https://github.com/C-NikhilKarthik/College-Organization-Management#readme"
+}

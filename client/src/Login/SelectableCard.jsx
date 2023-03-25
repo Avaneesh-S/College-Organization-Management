@@ -9,7 +9,7 @@ const SelectableCard = ({ title, description, onSelect, isSelected }) => {
 
   return (
     <div
-      className={`border rounded-lg shadow-md h-[8rem] cursor-pointer w-[12rem] ${
+      className={`border rounded-lg shadow-lg shadow-slate-700 h-[8rem] cursor-pointer w-[12rem] ${
         isSelected ? 'border-blue-500' : hover ? 'border-gray-400' : 'border-transparent'
       }`}
       onMouseEnter={() => setHover(true)}

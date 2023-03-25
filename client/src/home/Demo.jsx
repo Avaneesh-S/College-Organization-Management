@@ -55,7 +55,7 @@ function Demo() {
         <Drawer />
         <Sidebar />
         <div className="flex flex-col">
-          <div className="flex gap-8 w-full pl-[150px] pr-10 relative top-[10%] h-[90%]">
+          <div className="flex gap-8 w-full pl-[150px] pr-10 relative top-[10%] h-full pb-[100rem]">
             <div className="w-full flex flex-col">
               <div className="w-full rounded-md items-end min-h-[25rem] justify-between bg-center flex flex-col p-6 bg-[url('https://t3.ftcdn.net/jpg/02/54/80/60/360_F_254806029_19mSXkOwpIHBbZXLDcSQVsIXIEEAyhlp.jpg')] bg-cover bg-no-repeat">
                 <div className="text-4xl text-slate-200 text-right whitespace-nowrap">
