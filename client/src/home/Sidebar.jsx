@@ -30,7 +30,7 @@ function Sidebar() {
     },
   ];
   function open1() {
-    document.getElementById("sidebar").style.left = "0px";
+    document.getElementById("sidebar").style.left = "-4px";
   }
   function close() {
     document.getElementById("sidebar").style.left = "-200px";
@@ -38,7 +38,7 @@ function Sidebar() {
   return (
     <div
       id="sidebar"
-      className="fixed top-[10%] z-10 h-4/5 left-[-200px] w-[300px] flex flex-col gap-8 shadow-md shadow-slate-600 transition-[left] duration-700 rounded-md bg-gray-900 p-4"
+      className="border border-slate-500 fixed top-[10%] z-10 h-4/5 left-[-200px] w-[300px] flex flex-col gap-8 transition-[left] duration-700 rounded-md bg-gray-900/70 backdrop-filter backdrop-blur-md p-4"
     >
       {open ? (
         <div
