@@ -1,4 +1,5 @@
-Name,RegNo
-Anand,21bcs009
-Avaneesh,21bcs020
-Nikhil,21bcs040
+Name,RegNo,Emailid,21-03-2023,22-03-2023,23-03-2023
+Anand,21bcs009,anand@gmail.com,1,1,0
+Avaneesh,21bcs020,avaneesh@gmail.com,1,1,1
+Nikhil,21bcs040,nikhil@gmail.com,0,1,0
+Avinav,21bcs021,avi@gmail.com,0,1,1

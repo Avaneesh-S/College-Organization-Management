@@ -4,6 +4,6 @@ const router=express.Router();
 const attendance_controller=require('../controller/attendance_controller')
 
 router.route('/')
-    .get(attendance_controller.attend)
+    .post(attendance_controller.Attend)
     
 module.exports=router;
