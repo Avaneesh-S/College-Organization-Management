@@ -152,7 +152,7 @@ function CreateAccount() {
             You have successfully created an account using React and Tailwind.
           </p>
           <a
-            href="/"
+            href="/home"
             className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition duration-300 ease-in-out"
           >
             Start using your account
