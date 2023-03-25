@@ -5,27 +5,26 @@ function Attendance() {
   let [attenStatus, setattenStatus] = useState([]);
 
   const get_attendance = async (e) => {
-    const response = await fetch("/attendance", {
-      method: "GET",
+    const response = await fetch("/getStudentDetails", {
+      method: "POST",
     });
 
     const json = await response.json();
-    // console.log(json.value);
-
-    setData(json.value);
+    setData(json[0]);
   };
 
   useEffect(() => {
     get_attendance();
   }, []);
 
+
+
   const markAP = (status, index) => {
-    if(attenStatus.length>index+1)
-    {
-      attenStatus[index]=status;
-      return;
-    }
-    setattenStatus(prevStatus => [...prevStatus, status]);
+    setattenStatus(prevStatus => {
+      const updatedStatus = [...prevStatus];
+      updatedStatus[index] = status;
+      return updatedStatus;
+    });
   };
   useEffect(() => {
     console.log(attenStatus);
@@ -33,7 +32,6 @@ function Attendance() {
 
 
   const submitAttendance = async () => {
-    console.log('Submitted');
     try {
       const response = await fetch("/submitAttendance", {
         method: "POST",
@@ -66,8 +64,7 @@ function Attendance() {
         {data.map((row, index) => (
           <tr key={index}>
             <td>{index + 1}</td>
-            <td>{row.RegNo}</td>
-            <td>{row.Name}</td>
+            <td>{row}</td>
             <td>
               <button
                 type="submit"
