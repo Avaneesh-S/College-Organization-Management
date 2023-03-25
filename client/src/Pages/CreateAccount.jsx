@@ -3,7 +3,7 @@ import InputField from "../Login/InputField";
 import SelectableCard from "../Login/SelectableCard";
 function CreateAccount() {
   const [selectedCard, setSelectedCard] = useState(null);
-
+  const [val, setVal] = useState(0);
   const handleCardSelect = (card) => {
     setSelectedCard(card);
   };
@@ -44,6 +44,20 @@ function CreateAccount() {
       label: "E mail",
       icon: "mail",
     },
+    {
+      id: 6,
+      type: "numeric",
+      name: "PNumber",
+      label: "Phone Number",
+      icon: "phone",
+    },
+    {
+      id: 7,
+      type: "text",
+      name: "address",
+      label: "Address",
+      icon: "house",
+    },
   ];
   const steps = [
     {
@@ -69,13 +83,19 @@ function CreateAccount() {
           <SelectableCard
             title="College"
             description="This is card 1"
-            onSelect={() => handleCardSelect(1)}
+            onSelect={() => {
+              handleCardSelect(1);
+              setVal(1);
+            }}
             isSelected={selectedCard === 1}
           />
           <SelectableCard
             title="Organization"
             description="This is card 2"
-            onSelect={() => handleCardSelect(2)}
+            onSelect={() => {
+              handleCardSelect(2);
+              setVal(2);
+            }}
             isSelected={selectedCard === 2}
           />
         </div>
@@ -114,6 +134,83 @@ function CreateAccount() {
                 icon={i.icon}
               />
             ))}
+            {val === 1 ? (
+              <div className="relative">
+                <select
+                  className="pr-8 block px-2 backdrop-filter backdrop-blur-sm py-2.5 w-full text-sm text-gray-300 bg-gray-800 rounded-md appearance-none border-gray-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  id="select-option"
+                  //   value={selectedOption}
+                  //   onChange={handleChange}
+                >
+                  <option value="">Select an Designation</option>
+                  <option value="Student">Student</option>
+                  <option value="Teacher">Teacher</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-300">
+                  <svg
+                    className="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                    <path
+                      fill-rule="evenodd"
+                      d="M14.95 10A4.98 4.98 0 0110 14.95 4.98 4.98 0 015.05 10 4.98 4.98 0 0110 5.05 4.98 4.98 0 0114.95 10zM10 12a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+            ) : (
+              <div className="relative">
+                <select
+                  className="pr-8 block px-2 backdrop-filter backdrop-blur-sm py-2.5 w-full text-sm text-gray-300 bg-gray-800 rounded-md appearance-none border-gray-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  id="select-option"
+                  //   value={selectedOption}
+                  //   onChange={handleChange}
+                >
+                  <option value="">Select a Designation</option>
+                  <option value="Employee">Employee</option>
+                  <option value="Manager">Manager</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-300">
+                  <svg
+                    className="fill-current h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                    <path
+                      fill-rule="evenodd"
+                      d="M14.95 10A4.98 4.98 0 0110 14.95 4.98 4.98 0 015.05 10 4.98 4.98 0 0110 5.05 4.98 4.98 0 0114.95 10zM10 12a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+            )}
+            <div className="relative">
+              <select
+                className="pr-8 block px-2 backdrop-filter backdrop-blur-sm py-2.5 w-full text-sm text-gray-300 bg-gray-800 rounded-md appearance-none border-gray-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                id="select-option"
+              >
+                <option value="">Select an Organization</option>
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-300">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M14.95 10A4.98 4.98 0 0110 14.95 4.98 4.98 0 015.05 10 4.98 4.98 0 0110 5.05 4.98 4.98 0 0114.95 10zM10 12a2 2 0 100-4 2 2 0 000 4z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
           <button
             type="submit"

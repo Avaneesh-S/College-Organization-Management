@@ -73,7 +73,7 @@ function LoginPage() {
       </form>
       <div className="mt-8">
         <span className="text-gray-400">Don't have an account?</span>
-        <a href="#" className="text-white font-bold">
+        <a href="/createaccount" className="text-white font-bold">
           Sign Up
         </a>
       </div>
