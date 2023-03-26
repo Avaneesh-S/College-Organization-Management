@@ -406,7 +406,7 @@ function CreateAccount() {
         </div>
         <div className="flex justify-between w-[40rem] mt-4">
           <button
-            className={`px-4 py-2 bg-slate-900 text-white rounded ${
+            className={`px-4 py-2 bg-red-700 text-white rounded ${
               step === 1 ? "opacity-50 cursor-not-allowed" : ""
             }`}
             onClick={prevStep}
