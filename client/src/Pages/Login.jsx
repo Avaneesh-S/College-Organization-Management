@@ -22,9 +22,9 @@ function LoginPage() {
       {
         window.location.replace('/home')
       }
-      else{
-        window.location.replace('/login')
-        setMessage('Wrong password/email')
+      else if(json.mssg==="no"){
+        window.location.reload()
+        //setMessage('Wrong password/email')
       }
     }
   
