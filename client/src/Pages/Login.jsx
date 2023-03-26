@@ -3,6 +3,7 @@ import { useState } from 'react';
 function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [message,setMessage]=useState("");
   
     const verify=async(e)=>{
       const response=await fetch('/login',{
@@ -17,12 +18,13 @@ function LoginPage() {
   
       const json=await response.json()
   
-      if(json.mssg="yes")
+      if(json.mssg==="yes")
       {
         window.location.replace('/home')
       }
       else{
         window.location.replace('/login')
+        setMessage('Wrong password/email')
       }
     }
   
@@ -38,7 +40,7 @@ function LoginPage() {
         'flex flex-col items-center justify-center h-screen bg-gray-900 text-white'
     >
       <h1 className="text-3xl font-bold mb-4">Login</h1>
-      <form onSubmit={handleSubmit} className="w-full max-w-sm">
+      <form onSubmit={(e)=>handleSubmit(e)} className="w-full max-w-sm">
         <div className="mb-4">
           <label htmlFor="email" className="block mb-2">
             Email
@@ -65,6 +67,7 @@ function LoginPage() {
             required
           />
         </div>
+        {message &&(<p className="text-red-500 text-xs">{message}</p>)}
         <button
           type="submit"
           className="w-full py-2 px-4 bg-indigo-500 rounded text-white hover:bg-indigo-700 focus:outline-none focus:bg-indigo-700"
