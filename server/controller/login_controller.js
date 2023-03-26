@@ -1,5 +1,5 @@
 
-const Acc=require('../models/NewAcc');
+const User=require('../models/User_Details');
 const {org,course} = require('../datas/requireData')
 
 const login=(req,res)=>{
@@ -27,13 +27,13 @@ const login=(req,res)=>{
         {
             console.log("yoyoyoy")
             console.log(user_details[0])
-            if(user_details[0].password===present_user_password)
+            if(user_details[0].Password===present_user_password)
             {
-                
+                console.log("jjjjjjjj")
                 return res.json({mssg:"yes"})
             }
             else{
-
+                console.log("kkkkkkkkkk")
                 return res.json({mssg:"no"})
             }
         }
