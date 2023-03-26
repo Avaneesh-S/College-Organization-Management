@@ -9,7 +9,7 @@ function Cards({ title, icon, color }) {
         <span className="text-white text-3xl w peer-focus:text-blue-600 transition-[color pointer-events-none material-symbols-outlined">
           {icon}
         </span>
-        <h3 className="w-min text-white text-lg font-medium mb-2">{title}</h3>
+        <h3 className="w-min text-center text-white text-lg font-medium mb-2">{title}</h3>
       </div>
     </div>
   );

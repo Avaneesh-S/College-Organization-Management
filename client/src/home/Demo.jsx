@@ -4,6 +4,82 @@ import ProfileDrawer from "../profile/ProfileDrawer";
 import Drawer from "../Drawer/Drawer";
 import Sidebar from "./Sidebar";
 import Footer from "../Footer/footer";
+import {
+  Bar,
+  BarChart,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
+const cards = [
+  {
+    name: "Course Managment",
+    color: "bg-gradient-to-r from-rose-700 to-pink-600",
+  },
+  {
+    name: "Examination and Grading",
+    color: "bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500",
+  },
+  {
+    name: "Fee",
+    color: "bg-gradient-to-r from-green-300 to-purple-400",
+  },
+  {
+    name: "Attendance",
+    color: "bg-gradient-to-r from-purple-200 via-purple-400 to-purple-800",
+  },
+  {
+    name: "Library",
+    color: "bg-gradient-to-r from-indigo-300 to-purple-400",
+  },
+  {
+    name: "Communication",
+    color: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500",
+  },
+  {
+    name: "Alumni",
+    color: "bg-gradient-to-r from-green-300 via-blue-500 to-purple-600",
+  },
+];
+const del = [
+  {
+    name: "Mon",
+    CS: 96,
+    Maths: 99,
+  },
+  {
+    name: "Tue",
+    CS: 89.7,
+    Maths: 95,
+  },
+  {
+    name: "Wed",
+    CS: 84.3,
+    Maths: 90,
+  },
+  {
+    name: "Thur",
+    CS: 86.2,
+    Maths: 80,
+  },
+  {
+    name: "Fri",
+    CS: 90.3,
+    Maths: 84,
+  },
+  {
+    name: "Sat",
+    CS: 85.4,
+    Maths: 90,
+  },
+];
+
 function Demo() {
   return (
     <div className="w-screen h-screen bg-slate-800 flex flex-col rounded-md overflow-hidden">
@@ -54,8 +130,21 @@ function Demo() {
         <ProfileDrawer />
         <Drawer />
         <Sidebar />
-        <div className="flex flex-col">
-          <div className="flex gap-8 w-full pl-[150px] pr-10 relative top-[10%] h-full pb-[100rem]">
+        <div className="flex w-full flex-col overflow-x-hidden">
+        <div className="flex flex-col gap-8 w-full pl-[150px] pr-10 relative top-[10%] h-full pb-[100rem]">
+          <div className="w-full">
+            <div className="flex gap-6 relative">
+              {cards.map((card) => (
+                <Cards
+                  title={card.name}
+                  color={card.color}
+                  icon={"clock_loader_60"}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="flex gap-6">
             <div className="w-full flex flex-col">
               <div className="w-full rounded-md items-end min-h-[25rem] justify-between bg-center flex flex-col p-6 bg-[url('https://t3.ftcdn.net/jpg/02/54/80/60/360_F_254806029_19mSXkOwpIHBbZXLDcSQVsIXIEEAyhlp.jpg')] bg-cover bg-no-repeat">
                 <div className="text-4xl text-slate-200 text-right whitespace-nowrap">
@@ -85,6 +174,55 @@ function Demo() {
                   </svg>
                 </button>
               </div>
+              {/* <ResponsiveContainer width="100%" height="100%"> */}
+              <div className="w-full items-center gap-4 bg-slate-700 rounded mt-8 p-6 flex flex-col">
+                <h1 className="text-slate-300">Attendance</h1>
+                <LineChart
+                  width={500}
+                  height={300}
+                  data={del}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line
+                    type="monotone"
+                    dataKey="Maths"
+                    stroke="#8884d8"
+                    activeDot={{ r: 8 }}
+                  />
+                  <Line type="monotone" dataKey="CS" stroke="#82ca9d" />
+                </LineChart>
+                <h1 className="text-slate-300">Attendance - 2</h1>
+                <BarChart
+                  width={500}
+                  height={300}
+                  data={del}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="CS" fill="#8884d8" />
+                  <Bar dataKey="Maths" fill="#82ca9d" />
+                </BarChart>
+              </div>
+              {/* </ResponsiveContainer> */}
             </div>
             <div className="gap-4 flex flex-col">
               <div className="flex gap-4">
@@ -101,8 +239,9 @@ function Demo() {
               </div>
             </div>
           </div>
-          <Footer />
         </div>
+        <Footer />
+      </div>
       </div>
     </div>
   );

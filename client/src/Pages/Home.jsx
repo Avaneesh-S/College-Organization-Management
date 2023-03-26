@@ -16,6 +16,7 @@ import Sidebar from "../home/Sidebar";
 import ProfileDrawer from "../profile/ProfileDrawer";
 import Cards from "../home/Cards";
 import Footer from "../Footer/footer";
+import { Link } from "react-router-dom";
 
 const cards = [
   {
@@ -238,11 +239,13 @@ function Home() {
             </div>
             <div className="gap-4 flex flex-col">
               <div className="flex gap-4">
-                <Cards
-                  title={"Attendance"}
-                  color={"bg-gradient-to-r from-fuchsia-600 to-pink-600"}
-                  icon={"clock_loader_60"}
-                />
+                <Link to="/attendance">
+                  <Cards
+                    title={"Attendance"}
+                    color={"bg-gradient-to-r from-fuchsia-600 to-pink-600"}
+                    icon={"clock_loader_60"}
+                  />
+                </Link>
                 <Cards
                   title={"Performance"}
                   icon={"speed"}
