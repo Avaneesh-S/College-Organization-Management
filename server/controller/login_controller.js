@@ -7,37 +7,37 @@ const login=(req,res)=>{
     //const present_user_email=req.body.email_login
     const present_user_email=req.body.email_login
     const present_user_password=req.body.password_login
+
+    console.log("details:")
+    console.log(present_user_email)
+    console.log(present_user_password)
    
     let user_details=[]
-    Acc.collection.find({email:present_user_email}).forEach(user=>user_details.push(user))
+    let temp=[]
+    User.collection.find({Email:present_user_email}).forEach(user=>user_details.push(user))
     .then(()=>{
-        
-        if(user_details)
+
+        console.log(user_details.length)
+        if(user_details.length===0)
         {
+            console.log("popoppopop")
+            return res.json({mssg:"no"})
+        }
+        else
+        {
+            console.log("yoyoyoy")
             console.log(user_details[0])
             if(user_details[0].password===present_user_password)
             {
-                org.push(user_details[0].organisation);
-                course.push(user_details[0].designation);
-                console.log(org[0],course[0]);
-                console.log(user_details[0].password);
-                res.json({mssg:"yes"})
+                
+                return res.json({mssg:"yes"})
             }
             else{
-                
-                res.json({mssg:"no"})
+
+                return res.json({mssg:"no"})
             }
         }
-        else{
-            res.json({mssg:"no"})
-        }
-
         
-        
-        
-        
-        
-
     })
 
 }

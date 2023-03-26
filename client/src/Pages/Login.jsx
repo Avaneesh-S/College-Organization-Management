@@ -29,7 +29,7 @@ function LoginPage() {
     }
   
     const handleSubmit = (e) => {
-      e.preventDefault();
+      e.preventDefault()
       verify()
       console.log(`Email: ${email}, Password: ${password}`);
     };
