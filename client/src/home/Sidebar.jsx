@@ -30,6 +30,7 @@ function Sidebar() {
   function close() {
     document.getElementById("sidebar").style.left = "-200px";
   }
+  
   return (
     <div
       id="sidebar"
