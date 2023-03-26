@@ -13,9 +13,10 @@ function CreateAccount() {
   const [organisation,setOrganisation]=useState('');
   const [address,setAddress]=useState('');
   const [designation,setDesignation]= useState('');
-  // const [meassage,setMessage]=useState();
+  const [message,setMessage]=useState();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     console.log(fname,lname,email,password,phoNo,address,organisation,designation);
     try {
       const response = await fetch('/submitForm', {
@@ -40,9 +41,13 @@ function CreateAccount() {
       }
   
       const data = await response.json();
-      if(response)
+      if(data.status=='SUCCESS')
       {
-        nextStep();
+        // nextStep();
+        setStep(step + 1);
+      }
+      else{
+        setMessage(data.message);
       }
   
       console.log(data); // Log the response data
@@ -200,7 +205,7 @@ function CreateAccount() {
       ),
       content: (
         <form
-          onSubmit={handleSubmit}
+          onSubmit={(e)=>handleSubmit(e)}
           action="#"
           className="w-fit flex flex-col justify-end items-end gap-8"
         >
@@ -366,6 +371,7 @@ function CreateAccount() {
               </div>
             ) : null
           )}
+          {message &&(<p className="text-red-500 text-xs">{message}</p>)}
           <div className="relative flex w-[40rem] justify-between items-center">
             <div className="absolute h-3 rounded w-[40rem] border border-gray-500 bg-slate-900">
               <div className=""></div>
