@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "concurrently": "^7.6.0",
     "csv-parser": "^3.0.0",
     "csv-writer": "^1.6.0",
