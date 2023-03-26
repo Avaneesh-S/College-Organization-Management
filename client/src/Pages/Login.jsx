@@ -17,16 +17,18 @@ function LoginPage() {
   
       const json=await response.json()
   
-      if(json.mssg="yes")
+      if(json.mssg==="yes")
       {
         window.location.replace('/home')
       }
-      else{
-        window.location.replace('/login')
+      else if(json.mssg==="no"){
+
+        window.location.reload()
       }
     }
   
     const handleSubmit = (e) => {
+      e.preventDefault()
       verify()
       console.log(`Email: ${email}, Password: ${password}`);
     };
