@@ -4,6 +4,72 @@ import SelectableCard from "../Login/SelectableCard";
 function CreateAccount() {
   const [selectedCard, setSelectedCard] = useState(null);
   const [val, setVal] = useState(0);
+  const [org, setOrgInst] = useState([]);
+  const [fname,setFname]=useState('');
+  const [lname,setLname]=useState('');
+  const [password,setPassword]=useState('');
+  const [email,setEmail]=useState('');
+  const [phoNo,setPhoNo]=useState('');
+  const [organisation,setOrganisation]=useState('');
+  const [address,setAddress]=useState('');
+  const [designation,setDesignation]= useState('');
+  const [message,setMessage]=useState();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(fname,lname,email,password,phoNo,address,organisation,designation);
+    try {
+      const response = await fetch('/submitForm', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fname:fname,
+          lname:lname,
+          password:password,
+          email:email,
+          phoNo:phoNo,
+          organissation:organisation,
+          designation:designation,
+          address:address,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+  
+      const data = await response.json();
+      if(data.status=='SUCCESS')
+      {
+        // nextStep();
+        setStep(step + 1);
+      }
+      else{
+        setMessage(data.message);
+      }
+  
+      console.log(data); // Log the response data
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+
+  const requestInstList = async () => {
+    const response = await fetch("/getCollege");
+    const json = await response.json();
+    setOrgInst([]);
+    setOrgInst(json[0]);
+  };
+  const requestOrgList = async () => {
+    const response = await fetch("/getOrg");
+    const json = await response.json();
+    setOrgInst([]);
+    setOrgInst(json[0]);
+  };
+
   const handleCardSelect = (card) => {
     setSelectedCard(card);
   };
@@ -15,13 +81,18 @@ function CreateAccount() {
       name: "Fname",
       label: "First Name",
       icon: "person",
+      value: fname, // Add value prop and set it to fname state variable
+      onchange: (e) => setFname(e.target.value),
     },
+    // Add value props to other InputFields with corresponding state variables
     {
       id: 2,
       type: "text",
       name: "Lname",
       label: "Last Name",
       icon: "person",
+      value: lname,
+      onchange: (e) => setLname(e.target.value),
     },
     {
       id: 3,
@@ -29,6 +100,8 @@ function CreateAccount() {
       name: "pass",
       label: "Password",
       icon: "password",
+      value: password,
+      onchange: (e) => setPassword(e.target.value),
     },
     {
       id: 4,
@@ -36,6 +109,8 @@ function CreateAccount() {
       name: "pass2",
       label: "Re-Enter Password",
       icon: "password",
+      value: "",
+      onchange: (e) => {},
     },
     {
       id: 5,
@@ -43,6 +118,8 @@ function CreateAccount() {
       name: "email",
       label: "E mail",
       icon: "mail",
+      value: email,
+      onchange: (e) => setEmail(e.target.value),
     },
     {
       id: 6,
@@ -50,6 +127,8 @@ function CreateAccount() {
       name: "PNumber",
       label: "Phone Number",
       icon: "phone",
+      value: phoNo,
+      onchange: (e) => setPhoNo(e.target.value),
     },
     {
       id: 7,
@@ -57,6 +136,8 @@ function CreateAccount() {
       name: "address",
       label: "Address",
       icon: "house",
+      value: address,
+      onchange: (e) => setAddress(e.target.value),
     },
   ];
   const steps = [
@@ -85,6 +166,7 @@ function CreateAccount() {
             description="This is card 1"
             onSelect={() => {
               handleCardSelect(1);
+              requestInstList();
               setVal(1);
             }}
             isSelected={selectedCard === 1}
@@ -94,6 +176,7 @@ function CreateAccount() {
             description="This is card 2"
             onSelect={() => {
               handleCardSelect(2);
+              requestOrgList();
               setVal(2);
             }}
             isSelected={selectedCard === 2}
@@ -122,6 +205,7 @@ function CreateAccount() {
       ),
       content: (
         <form
+          onSubmit={(e)=>handleSubmit(e)}
           action="#"
           className="w-fit flex flex-col justify-end items-end gap-8"
         >
@@ -132,6 +216,7 @@ function CreateAccount() {
                 name={i.name}
                 label={i.label}
                 icon={i.icon}
+                onChange={i.onchange}
               />
             ))}
             {val === 1 ? (
@@ -139,8 +224,8 @@ function CreateAccount() {
                 <select
                   className="pr-8 block px-2 backdrop-filter backdrop-blur-sm py-2.5 w-full text-sm text-gray-300 bg-gray-800 rounded-md appearance-none border-gray-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   id="select-option"
-                  //   value={selectedOption}
-                  //   onChange={handleChange}
+                    value={designation}
+                    onChange={(e)=>setDesignation(e.target.value)}
                 >
                   <option value="">Select an Designation</option>
                   <option value="Student">Student</option>
@@ -166,8 +251,8 @@ function CreateAccount() {
                 <select
                   className="pr-8 block px-2 backdrop-filter backdrop-blur-sm py-2.5 w-full text-sm text-gray-300 bg-gray-800 rounded-md appearance-none border-gray-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   id="select-option"
-                  //   value={selectedOption}
-                  //   onChange={handleChange}
+                    value={designation}
+                    onChange={(e)=>setDesignation(e.target.value)}
                 >
                   <option value="">Select a Designation</option>
                   <option value="Employee">Employee</option>
@@ -193,8 +278,14 @@ function CreateAccount() {
               <select
                 className="pr-8 block px-2 backdrop-filter backdrop-blur-sm py-2.5 w-full text-sm text-gray-300 bg-gray-800 rounded-md appearance-none border-gray-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 id="select-option"
+                value={organisation}
+                onChange={(e) => setOrganisation(e.target.value)}
               >
-                <option value="">Select an Organization</option>
+                {org.map((item, index) => (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                ))}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-300">
                 <svg
@@ -280,6 +371,7 @@ function CreateAccount() {
               </div>
             ) : null
           )}
+          {message &&(<p className="text-red-500 text-xs">{message}</p>)}
           <div className="relative flex w-[40rem] justify-between items-center">
             <div className="absolute h-3 rounded w-[40rem] border border-gray-500 bg-slate-900">
               <div className=""></div>
